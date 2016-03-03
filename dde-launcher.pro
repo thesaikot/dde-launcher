@@ -3,7 +3,7 @@ QT      += core gui dbus widgets
 TARGET = dde-launcher
 TEMPLATE = app
 CONFIG += c++11 link_pkgconfig
-PKGCONFIG += dtkbase dtkwidget
+PKGCONFIG += dtkbase dtkwidget dtkbase
 
 SOURCES += \
     mian.cpp \
