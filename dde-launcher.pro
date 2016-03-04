@@ -15,7 +15,8 @@ SOURCES += \
     dbus/iteminfo.cpp \
     dbus/installedtimeinfo.cpp \
     model/appslistmodel.cpp \
-    model/appsmanager.cpp
+    model/appsmanager.cpp \
+    appitemdelegate.cpp
 
 HEADERS += \
     mainframe.h \
@@ -26,4 +27,5 @@ HEADERS += \
     dbus/iteminfo.h \
     dbus/installedtimeinfo.h \
     model/appslistmodel.h \
-    model/appsmanager.h
+    model/appsmanager.h \
+    appitemdelegate.h
