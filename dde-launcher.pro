@@ -18,8 +18,11 @@ SOURCES += \
     appitemdelegate.cpp \
     view/applistview.cpp \
     widget/categorytitlewidget.cpp \
-    widget/categorylistwidget.cpp \
-    widget/searchwidget.cpp
+    widget/searchwidget.cpp \
+    widget/navigationlistwidget.cpp \
+    widget/navigationbuttonframe.cpp \
+    widget/basecheckedbutton.cpp \
+    global_util/util.cpp
 
 HEADERS += \
     mainframe.h \
@@ -33,9 +36,14 @@ HEADERS += \
     appitemdelegate.h \
     view/applistview.h \
     widget/categorytitlewidget.h \
-    constants.h \
-    widget/categorylistwidget.h \
-    widget/searchwidget.h
+    widget/searchwidget.h \
+    global_util/constants.h \
+    widget/navigationlistwidget.h \
+    widget/navigationbuttonframe.h \
+    widget/basecheckedbutton.h \
+    global_util/global.h \
+    global_util/calcuate_util.h \
+    global_util/util.h
 
 target.path = /usr/bin
 
@@ -46,3 +54,6 @@ service.path = /usr/share/dbus-1/services
 service.files = dbusservices/com.deepin.dde.Launcher.service
 
 INSTALLS += target qm_files services
+
+RESOURCES += \
+    skin.qrc
