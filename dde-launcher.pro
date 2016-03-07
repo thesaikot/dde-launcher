@@ -17,7 +17,9 @@ SOURCES += \
     model/appsmanager.cpp \
     appitemdelegate.cpp \
     view/applistview.cpp \
-    widget/categorytitlewidget.cpp
+    widget/categorytitlewidget.cpp \
+    widget/categorylistwidget.cpp \
+    widget/searchwidget.cpp
 
 HEADERS += \
     mainframe.h \
@@ -31,7 +33,9 @@ HEADERS += \
     appitemdelegate.h \
     view/applistview.h \
     widget/categorytitlewidget.h \
-    constants.h
+    constants.h \
+    widget/categorylistwidget.h \
+    widget/searchwidget.h
 
 target.path = /usr/bin
 
