@@ -1,9 +1,9 @@
-QT      += core gui dbus widgets
+QT      += core gui dbus widgets x11extras
 
 TARGET = dde-launcher
 TEMPLATE = app
 CONFIG += c++11 link_pkgconfig
-PKGCONFIG += dtkbase dtkwidget dtkbase
+PKGCONFIG += dtkbase dtkwidget dtkbase xcb xcb-ewmh
 
 SOURCES += \
     mian.cpp \
@@ -22,7 +22,9 @@ SOURCES += \
     dbus/dbusvariant/frequencyinfo.cpp \
     dbus/dbusvariant/installedtimeinfo.cpp \
     dbus/dbusvariant/iteminfo.cpp \
-    delegate/appitemdelegate.cpp
+    delegate/appitemdelegate.cpp \
+    dbus/dbustartmanager.cpp \
+    global_util/xcb_misc.cpp
 
 HEADERS += \
     mainframe.h \
@@ -41,7 +43,9 @@ HEADERS += \
     dbus/dbusvariant/frequencyinfo.h \
     dbus/dbusvariant/installedtimeinfo.h \
     dbus/dbusvariant/iteminfo.h \
-    delegate/appitemdelegate.h
+    delegate/appitemdelegate.h \
+    dbus/dbustartmanager.h \
+    global_util/xcb_misc.h
 
 target.path = /usr/bin
 
