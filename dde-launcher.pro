@@ -24,7 +24,9 @@ SOURCES += \
     dbus/dbusvariant/iteminfo.cpp \
     delegate/appitemdelegate.cpp \
     dbus/dbustartmanager.cpp \
-    global_util/xcb_misc.cpp
+    global_util/xcb_misc.cpp \
+    widget/navigationwidget.cpp \
+    widget/categorybutton.cpp
 
 HEADERS += \
     mainframe.h \
@@ -45,7 +47,9 @@ HEADERS += \
     dbus/dbusvariant/iteminfo.h \
     delegate/appitemdelegate.h \
     dbus/dbustartmanager.h \
-    global_util/xcb_misc.h
+    global_util/xcb_misc.h \
+    widget/navigationwidget.h \
+    widget/categorybutton.h
 
 target.path = /usr/bin
 
