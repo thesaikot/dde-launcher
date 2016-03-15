@@ -14,8 +14,6 @@ SOURCES += \
     view/applistview.cpp \
     widget/categorytitlewidget.cpp \
     widget/searchwidget.cpp \
-    widget/navigationbuttonframe.cpp \
-    widget/basecheckedbutton.cpp \
     global_util/util.cpp \
     dbus/dbusfileinfo.cpp \
     dbus/dbusvariant/categoryinfo.cpp \
@@ -41,8 +39,6 @@ HEADERS += \
     widget/categorytitlewidget.h \
     widget/searchwidget.h \
     global_util/constants.h \
-    widget/navigationbuttonframe.h \
-    widget/basecheckedbutton.h \
     global_util/util.h \
     dbus/dbusfileinfo.h \
     dbus/dbusvariant/categoryinfo.h \
