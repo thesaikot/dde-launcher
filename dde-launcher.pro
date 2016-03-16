@@ -5,6 +5,10 @@ TEMPLATE = app
 CONFIG += c++11 link_pkgconfig
 PKGCONFIG += dtkbase dtkwidget dtkbase xcb xcb-ewmh
 
+
+include(./widget/widget.pri)
+include(./dialogs/dialogs.pri)
+
 SOURCES += \
     mian.cpp \
     mainframe.cpp \
@@ -12,8 +16,6 @@ SOURCES += \
     model/appslistmodel.cpp \
     model/appsmanager.cpp \
     view/applistview.cpp \
-    widget/categorytitlewidget.cpp \
-    widget/searchwidget.cpp \
     global_util/util.cpp \
     dbus/dbusfileinfo.cpp \
     dbus/dbusvariant/categoryinfo.cpp \
@@ -23,8 +25,6 @@ SOURCES += \
     delegate/appitemdelegate.cpp \
     dbus/dbustartmanager.cpp \
     global_util/xcb_misc.cpp \
-    widget/navigationwidget.cpp \
-    widget/categorybutton.cpp \
     dbus/dbusmenu.cpp \
     dbus/dbusmenumanager.cpp \
     worker/menuworker.cpp \
@@ -36,8 +36,6 @@ HEADERS += \
     model/appslistmodel.h \
     model/appsmanager.h \
     view/applistview.h \
-    widget/categorytitlewidget.h \
-    widget/searchwidget.h \
     global_util/constants.h \
     global_util/util.h \
     dbus/dbusfileinfo.h \
@@ -48,8 +46,6 @@ HEADERS += \
     delegate/appitemdelegate.h \
     dbus/dbustartmanager.h \
     global_util/xcb_misc.h \
-    widget/navigationwidget.h \
-    widget/categorybutton.h \
     dbus/dbusmenu.h \
     dbus/dbusmenumanager.h \
     worker/menuworker.h \
