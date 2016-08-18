@@ -42,6 +42,7 @@ signals:
     void requestHideTips() const;
 
 public slots:
+    void refreshAppIconCache();
     void saveUserSortedList();
     void searchApp(const QString &keywords);
     void launchApp(const QModelIndex &index);
@@ -76,7 +77,6 @@ private:
     void sortByPresetOrder(ItemInfoList &processList);
     void refreshCategoryInfoList();
     void generateCategoryMap();
-    void refreshAppIconCache();
     void refreshAppAutoStartCache();
 
 private slots:
