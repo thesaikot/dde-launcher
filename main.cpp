@@ -1,3 +1,4 @@
+#include <sys/mman.h>
 
 #include "mainframe.h"
 #include "dbuslauncherframe.h"
@@ -78,6 +79,11 @@ int main(int argv, char *args[])
     if (/*!positionArgs.isEmpty() && */cmdParser.isSet(showOption))
 #endif
         launcher.show();
+
+    QString deepinMlockall = QProcessEnvironment::systemEnvironment().value("DEEPIN_MLOCKALL");
+    if (deepinMlockall == "true") {
+        mlockall(MCL_CURRENT);
+    }
 
     return app.exec();
 }
