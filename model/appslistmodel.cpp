@@ -190,6 +190,8 @@ QVariant AppsListModel::data(const QModelIndex &index, int role) const
         return m_appsManager->appIsOnDock(itemInfo.m_desktop);
     case AppIsRemovableRole:
         return itemIsRemovable(itemInfo.m_desktop);
+    case AppAllowSendDockRole:
+        return itemIsDockable(itemInfo.m_desktop);
     case AppNewInstallRole:
         return m_appsManager->appIsNewInstall(itemInfo.m_key);
     case AppIconRole:
@@ -277,4 +279,11 @@ bool AppsListModel::itemIsRemovable(const QString &desktop) const
     }
 
     return true;
+}
+
+bool AppsListModel::itemIsDockable(const QString &desktop) const
+{
+    static QStringList BlackList = { "/usr/share/applications/dde-trash.desktop" };
+
+    return !BlackList.contains(desktop);
 }

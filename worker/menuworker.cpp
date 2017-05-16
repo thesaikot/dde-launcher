@@ -73,7 +73,8 @@ QString MenuWorker::createMenuContent(/*QString appKey*/){
     if (m_isItemOnDock){
         dockObj = createMenuItem(2, tr("Remove from dock"));
     }else{
-        dockObj = createMenuItem(2, tr("Send to dock(_C)"));
+        if (m_currentModelIndex.data(AppsListModel::AppAllowSendDockRole).toBool())
+            dockObj = createMenuItem(2, tr("Send to dock(_C)"));
     }
     QJsonObject seperatorObj2 = createSeperator();
     QJsonObject startupObj;
