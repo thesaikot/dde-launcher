@@ -12,8 +12,10 @@
 AppsManager *AppsManager::INSTANCE = nullptr;
 
 QSettings AppsManager::APP_PRESET_SORTED_LIST(
-#ifdef ARCH_MIPSEL
+#if defined ARCH_MIPSEL
     "/usr/share/dde-launcher/data/preset-order-mips.conf",
+#elif defined ARCH_ALPHA
+    "/usr/share/dde-launcher/data/preset-order-alpha.conf",
 #else
     "/usr/share/dde-launcher/data/preset-order.conf",
 #endif
