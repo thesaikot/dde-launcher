@@ -1,8 +1,12 @@
 #include "miniframebottombar.h"
 
-#include <DDesktopServices>
+#include <ddesktopservices.h>
 
 DWIDGET_USE_NAMESPACE
+DWIDGET_USE_NAMESPACE
+#ifdef DUTIL_NAMESPACE
+DUTIL_USE_NAMESPACE
+#endif
 
 MiniFrameBottomBar::MiniFrameBottomBar(QWidget *parent)
     : QWidget(parent)

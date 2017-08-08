@@ -3,7 +3,7 @@ QT      += core gui dbus widgets x11extras svg
 TARGET = dde-launcher
 TEMPLATE = app
 CONFIG += c++14 link_pkgconfig
-PKGCONFIG += dtkwidget dtkcore xcb xcb-ewmh \
+PKGCONFIG += dtkwidget dtkutil xcb xcb-ewmh \
           gsettings-qt dframeworkdbus
 
 include(./feature-macros.pri)
