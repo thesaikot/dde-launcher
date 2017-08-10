@@ -7,7 +7,7 @@
 HistoryModel::HistoryModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    QTimer::singleShot(1, this, &HistoryModel::updateHistory);
+    connect(&m_history, &RecentlyUsed::dataChanged, this, &HistoryModel::updateHistory);
 }
 
 int HistoryModel::rowCount(const QModelIndex &parent) const
@@ -34,13 +34,16 @@ QVariant HistoryModel::data(const QModelIndex &index, int role) const
 void HistoryModel::clear()
 {
     m_history.clear();
-
-    QTimer::singleShot(1, this, &HistoryModel::updateHistory);
 }
 
-void HistoryModel::updateHistory()
+void HistoryModel::reload()
 {
-    const QStringList history = m_history.history();
+    m_history.reload();
+}
+
+void HistoryModel::updateHistory(const QList<QString> &history)
+{
+    m_data.clear();
 
     for (const auto &h : history)
     {

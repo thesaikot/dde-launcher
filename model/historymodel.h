@@ -26,9 +26,10 @@ public:
 
 public slots:
     void clear();
+    void reload();
 
 private slots:
-    void updateHistory();
+    void updateHistory(const QList<QString> &history);
 
 private:
     RecentlyUsed m_history;

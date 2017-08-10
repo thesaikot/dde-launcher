@@ -15,10 +15,11 @@ public:
 
     const QList<QString> history() const { return m_history; }
 
+signals:
+    void dataChanged(const QList<QString> &history) const;
+
 public slots:
     void clear();
-
-private slots:
     void reload();
 
 private:
