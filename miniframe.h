@@ -14,6 +14,8 @@
 
 #include <memory>
 
+#define HISTORY_PANEL
+
 DWIDGET_USE_NAMESPACE
 
 class QScrollArea;

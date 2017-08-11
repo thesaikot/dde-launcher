@@ -6,6 +6,8 @@
 #include <QWidget>
 #include <dimagebutton.h>
 
+#define SYS_INFO_BUTTON
+
 class MiniFrameBottomBar : public QWidget
 {
     Q_OBJECT
