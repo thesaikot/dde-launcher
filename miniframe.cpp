@@ -74,6 +74,7 @@ MiniFrame::MiniFrame(QWidget *parent)
 #ifdef HISTORY_PANEL
     m_historyToggle = new QPushButton("最近打开");
 #endif
+    m_searchToggle = new QPushButton("搜索文件");
     m_modeToggle = new DImageButton;
     m_modeToggle->setNormalPic(":/icons/skin/icons/fullscreen_normal.png");
     m_modeToggle->setHoverPic(":/icons/skin/icons/fullscreen_hover.png");
@@ -94,6 +95,7 @@ MiniFrame::MiniFrame(QWidget *parent)
 #ifdef HISTORY_PANEL
     viewHeaderLayout->addWidget(m_historyToggle);
 #endif
+    viewHeaderLayout->addWidget(m_searchToggle);
     viewHeaderLayout->addStretch();
     viewHeaderLayout->addWidget(m_searchWidget);
     viewHeaderLayout->addStretch();
@@ -133,12 +135,17 @@ MiniFrame::MiniFrame(QWidget *parent)
     m_historyWidget->setVisible(false);
 #endif
 
+    m_fileSearchWidget = new FileSearchWidget;
+    m_fileSearchWidget->setVisible(false);
+    m_fileSearchWidget->search("main");
+
     QVBoxLayout *centralLayout = new QVBoxLayout;
     centralLayout->addLayout(viewHeaderLayout);
     centralLayout->addWidget(m_viewWrapper);
 #ifdef HISTORY_PANEL
     centralLayout->addWidget(m_historyWidget);
 #endif
+    centralLayout->addWidget(m_fileSearchWidget);
     centralLayout->addWidget(m_bottomBar);
     centralLayout->setSpacing(0);
     centralLayout->setContentsMargins(10, 0, 10, 0);
@@ -162,6 +169,7 @@ MiniFrame::MiniFrame(QWidget *parent)
 #ifdef HISTORY_PANEL
     connect(m_historyToggle, &QPushButton::clicked, this, &MiniFrame::onToggleHistoryClicked, Qt::QueuedConnection);
 #endif
+    connect(m_searchToggle, &QPushButton::clicked, this, &MiniFrame::onToggleSearchClicked, Qt::QueuedConnection);
     connect(m_viewToggle, &DImageButton::clicked, this, &MiniFrame::onToggleViewClicked, Qt::QueuedConnection);
     connect(m_categoryWidget, &MiniCategoryWidget::requestCategory, m_appsModel, &AppsListModel::setCategory, Qt::QueuedConnection);
     connect(m_categoryWidget, &MiniCategoryWidget::requestCategory, this, &MiniFrame::checkIndex, Qt::QueuedConnection);
@@ -541,6 +549,11 @@ void MiniFrame::onToggleViewClicked()
     m_viewWrapper->clear();
 
     QTimer::singleShot(1, this, &MiniFrame::reloadAppsView);
+}
+
+void MiniFrame::onToggleSearchClicked()
+{
+    qDebug() << "Cc";
 }
 
 #ifdef HISTORY_PANEL

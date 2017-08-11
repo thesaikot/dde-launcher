@@ -3,6 +3,7 @@
 
 #include "launcherinterface.h"
 #include "global_util/constants.h"
+#include "filesearchwidget.h"
 
 #include <QPushButton>
 
@@ -67,6 +68,7 @@ private slots:
 #ifdef HISTORY_PANEL
     void onToggleHistoryClicked();
 #endif
+    void onToggleSearchClicked();
     void onWMCompositeChanged();
     void prepareHideLauncher();
     void focusRightPanel();
@@ -98,6 +100,7 @@ private:
 #ifdef HISTORY_PANEL
     QPushButton *m_historyToggle;
 #endif
+    QPushButton *m_searchToggle;
     DImageButton *m_modeToggle;
     SearchWidget *m_searchWidget;
 
@@ -110,6 +113,7 @@ private:
 #ifdef HISTORY_PANEL
     HistoryWidget *m_historyWidget;
 #endif
+    FileSearchWidget *m_fileSearchWidget;
     QListView *m_appsView;
     AppsListModel *m_appsModel;
     AppsListModel *m_searchModel;
