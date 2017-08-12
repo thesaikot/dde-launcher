@@ -11,6 +11,9 @@ class FileSearchWidget : public QWidget
 public:
     explicit FileSearchWidget(QWidget *parent = 0);
 
+public slots:
+    void onItemClicked(const QModelIndex &idx);
+
 private:
     QLineEdit *m_searchEdit;
     QListView *m_searchView;

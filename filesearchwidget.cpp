@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QLabel>
+#include <QModelIndex>
 
 FileSearchWidget::FileSearchWidget(QWidget *parent)
     : QWidget(parent)
@@ -30,4 +31,12 @@ FileSearchWidget::FileSearchWidget(QWidget *parent)
     setLayout(centralLayout);
 
     connect(m_searchEdit, &QLineEdit::textChanged, model, &FileSearchModel::search);
+    connect(m_searchView, &QListView::clicked, this, &FileSearchWidget::onItemClicked);
+}
+
+void FileSearchWidget::onItemClicked(const QModelIndex &idx)
+{
+    const QString &path = idx.data(FileSearchModel::FilePathRole).toString();
+
+    QProcess::startDetached("xdg-open", QStringList() << path);
 }

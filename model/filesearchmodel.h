@@ -19,6 +19,7 @@ public:
     {
         FileNameRole = Qt::DisplayRole,
         UnusedRole = Qt::UserRole,
+        FilePathRole,
     };
 
     int rowCount(const QModelIndex &parent) const;

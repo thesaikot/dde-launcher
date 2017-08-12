@@ -26,6 +26,7 @@ QVariant FileSearchModel::data(const QModelIndex &index, int role) const
     switch (role)
     {
     case FileNameRole:      return m_data[r].filePath();
+    case FilePathRole:      return m_data[r].filePath();
     default:;
     }
 
