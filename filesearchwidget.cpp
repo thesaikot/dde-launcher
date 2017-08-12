@@ -1,45 +1,33 @@
 #include "filesearchwidget.h"
+#include "../model/filesearchmodel.h"
 
 #include <QDebug>
+#include <QVBoxLayout>
+#include <QLineEdit>
+#include <QLabel>
 
 FileSearchWidget::FileSearchWidget(QWidget *parent)
-    : QWidget(parent),
-
-      m_searchDelay(new QTimer(this))
+    : QWidget(parent)
 {
-    m_searchDelay->setInterval(100);
-    m_searchDelay->setSingleShot(true);
+    FileSearchModel *model = new FileSearchModel;
 
-    connect(m_searchDelay, &QTimer::timeout, this, &FileSearchWidget::searchStart, Qt::QueuedConnection);
-}
+    m_searchEdit = new QLineEdit;
+    m_searchView = new QListView;
+    m_searchView->setModel(model);
+    m_searchView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_searchView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-void FileSearchWidget::search(const QString &text)
-{
-    m_searchText = text.trimmed();
-    m_searchDelay->start();
-}
+    QHBoxLayout *searchLayout = new QHBoxLayout;
+    searchLayout->addStretch();
+    searchLayout->addWidget(new QLabel("搜索："));
+    searchLayout->addWidget(m_searchEdit);
+    searchLayout->addStretch();
 
-void FileSearchWidget::searchStart()
-{
-    if (!m_worker.isNull())
-    {
-        m_worker->terminate();
-        m_worker->deleteLater();
-    }
+    QVBoxLayout *centralLayout = new QVBoxLayout;
+    centralLayout->addLayout(searchLayout);
+    centralLayout->addWidget(m_searchView);
 
-    QProcess *proc = new QProcess;
-    connect(proc, static_cast<void (QProcess::*)(int)>(&QProcess::finished), this, &FileSearchWidget::onSearchDone);
+    setLayout(centralLayout);
 
-    proc->start("locate", QStringList() << m_searchText);
-
-    m_worker = proc;
-}
-
-void FileSearchWidget::onSearchDone()
-{
-    QProcess *proc = static_cast<QProcess *>(sender());
-
-    qDebug() << proc->readAllStandardOutput();
-
-    proc->deleteLater();
+    connect(m_searchEdit, &QLineEdit::textChanged, model, &FileSearchModel::search);
 }

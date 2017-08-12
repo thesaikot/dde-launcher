@@ -137,7 +137,6 @@ MiniFrame::MiniFrame(QWidget *parent)
 
     m_fileSearchWidget = new FileSearchWidget;
     m_fileSearchWidget->setVisible(false);
-    m_fileSearchWidget->search("main");
 
     QVBoxLayout *centralLayout = new QVBoxLayout;
     centralLayout->addLayout(viewHeaderLayout);
@@ -553,7 +552,16 @@ void MiniFrame::onToggleViewClicked()
 
 void MiniFrame::onToggleSearchClicked()
 {
-    qDebug() << "Cc";
+    if (m_viewWrapper->isVisible())
+    {
+        m_viewWrapper->setVisible(false);
+        m_historyWidget->setVisible(false);
+        m_fileSearchWidget->setVisible(true);
+    } else {
+        m_viewWrapper->setVisible(true);
+        m_historyWidget->setVisible(false);
+        m_fileSearchWidget->setVisible(false);
+    }
 }
 
 #ifdef HISTORY_PANEL
@@ -563,9 +571,11 @@ void MiniFrame::onToggleHistoryClicked()
     {
         m_viewWrapper->setVisible(false);
         m_historyWidget->setVisible(true);
+        m_fileSearchWidget->setVisible(false);
     } else {
         m_viewWrapper->setVisible(true);
         m_historyWidget->setVisible(false);
+        m_fileSearchWidget->setVisible(false);
     }
 }
 #endif

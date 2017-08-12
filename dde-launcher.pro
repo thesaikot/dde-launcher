@@ -36,7 +36,8 @@ SOURCES += \
     global_util/recentlyused.cpp \
     historywidget.cpp \
     model/historymodel.cpp \
-    filesearchwidget.cpp
+    filesearchwidget.cpp \
+    model/filesearchmodel.cpp
 
 HEADERS += \
     model/appslistmodel.h \
@@ -59,7 +60,8 @@ HEADERS += \
     global_util/recentlyused.h \
     historywidget.h \
     model/historymodel.h \
-    filesearchwidget.h
+    filesearchwidget.h \
+    model/filesearchmodel.h
 
 #Automating generation .qm files from .ts files
 system($$PWD/translate_generation.sh)
